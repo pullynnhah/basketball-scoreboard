@@ -21,6 +21,7 @@ function startGame() {
   if (interval !== null) {
     clearInterval(interval);
   }
+  timerActive = true;
   newPeriod();
 }
 
@@ -68,8 +69,21 @@ function addFoul(team) {
   }
 }
 
+function stopPlayTimer() {
+  if (interval !== null) {
+    if (timerActive) {
+      clearInterval(interval);
+      timerActive = false;
+    } else {
+      interval = setInterval(changeTimer, 1000);
+      timerActive = true;
+    }
+  }
+}
+
 const timer = document.querySelector(".timer");
 const period = document.querySelector(".period");
+const stopBtn = document.querySelector(".stop-play");
 
 const homeScore = document.querySelector(".home .score");
 const homeFouls = document.querySelector(".home .fouls");
@@ -80,3 +94,4 @@ const guestFouls = document.querySelector(".guest .fouls");
 let scoreboard = null;
 let interval = null;
 let isInterval = null;
+let timerActive = null;
