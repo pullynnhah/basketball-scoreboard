@@ -17,50 +17,51 @@
     <main>
       <div>
         <h2>TIMER</h2>
-        <div class="timer board">15:00</div>
+        <div class="timer board">00:00</div>
       </div>
       <section>
         <div class="home">
           <div class="score-container">
             <h2>HOME</h2>
-            <div class="score board">101</div>
-            <div class="btns">
-              <button class="default-btn" onclick="onePoint('home')">+1</button>
-              <button class="default-btn" onclick="twoPoints('home')">+2</button>
-              <button class="default-btn" onclick="threePoints('home')">+3</button>
+            <div class="score board">0</div>
+            <div>
+              <button class="default-btn" onclick="addPoints('home', 1)">+1</button>
+              <button class="default-btn" onclick="addPoints('home', 2)">+2</button>
+              <button class="default-btn" onclick="addPoints('home', 3)">+3</button>
             </div>
           </div>
 
           <div class="fouls-container">
             <h3>FOULS</h3>
-            <div class="fouls board">6</div>
-            <button class="default-btn" onclick="oneFoul('home')">+1</button>
+            <div class="fouls board">0</div>
+            <button class="default-btn" onclick="addFoul('home')">+1</button>
           </div>
         </div>
         <div class="period-container">
           <h2>PERIOD</h2>
-          <div class="period board">3</div>
+          <div class="period board">0</div>
         </div>
         <div class="guest">
           <div class="score-container">
             <h2>GUEST</h2>
-            <div class="score board">98</div>
-            <div class="btns">
-              <button class="default-btn" onclick="onePoint('guest')">+1</button>
-              <button class="default-btn" onclick="twoPoints('guest')">+2</button>
-              <button class="default-btn" onclick="threePoints('guest')">+3</button>
+            <div class="score board">0</div>
+            <div>
+              <button class="default-btn" onclick="addPoints('guest', 1)">+1</button>
+              <button class="default-btn" onclick="addPoints('guest', 2)">+2</button>
+              <button class="default-btn" onclick="addPoints('guest', 3)">+3</button>
             </div>
           </div>
 
           <div class="fouls-container">
             <h3>FOULS</h3>
-            <div class="fouls board">7</div>
-            <button class="default-btn" onclick="oneFoul('guest')">+1</button>
+            <div class="fouls board">0</div>
+            <button class="default-btn" onclick="addFoul('guest')">+1</button>
           </div>
         </div>
       </section>
-      <div>
-        <button class="new-game-btn" onclick="startGame()">NEW GAME</button>
+      <div class="btns">
+        <button class="action-btn" onclick="newPeriod()">NEW PERIOD</button>
+        <button class="action-btn" onclick="startGame()">NEW GAME</button>
       </div>
     </main>
     <script src="script.js"></script>
