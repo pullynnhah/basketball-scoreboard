@@ -47,20 +47,24 @@ function changeTimer() {
 }
 
 function addPoints(team, points) {
-  scoreboard[team].score += points;
-  if (team === 'home') {
-    homeScore.textContent = `${scoreboard.home.score}`;
-  } else {
-    guestScore.textContent = `${scoreboard.guest.score}`;
+  if (scoreboard !== null) {
+    scoreboard[team].score += points;
+    if (team === "home") {
+      homeScore.textContent = `${scoreboard.home.score}`;
+    } else {
+      guestScore.textContent = `${scoreboard.guest.score}`;
+    }
   }
 }
 
 function addFoul(team) {
-  scoreboard[team].fouls++;
-  if (team === 'home') {
-    homeFouls.textContent = `${scoreboard.home.fouls}`;
-  } else {
-    guestFouls.textContent = `${scoreboard.guest.fouls}`;
+  if (scoreboard !== null) {
+    scoreboard[team].fouls++;
+    if (team === "home") {
+      homeFouls.textContent = `${scoreboard.home.fouls}`;
+    } else {
+      guestFouls.textContent = `${scoreboard.guest.fouls}`;
+    }
   }
 }
 
