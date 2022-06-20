@@ -2,12 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Basketball Scoreboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap"
+      rel="stylesheet" />
 
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <main>
+      <div>
+        <h2>TIMER</h2>
+        <div class="timer board">15:00</div>
+      </div>
+      <section>
+        <div class="home">
+          <div class="score-container">
+            <h2>HOME</h2>
+            <div class="score board">101</div>
+            <div class="btns">
+              <button class="default-btn" onclick="onePoint('home')">+1</button>
+              <button class="default-btn" onclick="twoPoints('home')">+2</button>
+              <button class="default-btn" onclick="threePoints('home')">+3</button>
+            </div>
+          </div>
+
+          <div class="fouls-container">
+            <h3>FOULS</h3>
+            <div class="fouls board">6</div>
+            <button class="default-btn" onclick="oneFoul('home')">+1</button>
+          </div>
+        </div>
+        <div class="period-container">
+          <h2>PERIOD</h2>
+          <div class="period board">3</div>
+        </div>
+        <div class="guest">
+          <div class="score-container">
+            <h2>GUEST</h2>
+            <div class="score board">98</div>
+            <div class="btns">
+              <button class="default-btn" onclick="onePoint('guest')">+1</button>
+              <button class="default-btn" onclick="twoPoints('guest')">+2</button>
+              <button class="default-btn" onclick="threePoints('guest')">+3</button>
+            </div>
+          </div>
+
+          <div class="fouls-container">
+            <h3>FOULS</h3>
+            <div class="fouls board">7</div>
+            <button class="default-btn" onclick="oneFoul('guest')">+1</button>
+          </div>
+        </div>
+      </section>
+      <div>
+        <button class="new-game-btn" onclick="startGame()">NEW GAME</button>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
