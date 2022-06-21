@@ -60,9 +60,17 @@ section {
   align-items: center;
 }
 
+.winning h2 {
+  color: #ffc120;
+}
+
 .score {
   width: 130px;
   justify-content: end;
+}
+
+.winning .score {
+  border: 2px solid #ffc120;
 }
 
 .fouls {

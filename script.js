@@ -11,12 +11,15 @@ function startGame() {
     period: 0,
     timer: 0,
   };
-  isInterval = true;
-  homeScore.textContent = `${scoreboard.home.score}`;
-  homeFouls.textContent = `${scoreboard.home.fouls}`;
 
-  guestScore.textContent = `${scoreboard.guest.score}`;
-  guestFouls.textContent = `${scoreboard.guest.fouls}`;
+  winning = null;
+  isInterval = true;
+
+  const teams = ["home", "guest"];
+  for (let i = 0; i < teams.length; i++) {
+    panel[teams[i]].score.textContent = `${scoreboard.home.score}`;
+    panel[teams[i]].fouls.textContent = `${scoreboard.home.fouls}`;
+  }
 
   if (interval !== null) {
     clearInterval(interval);
@@ -50,22 +53,15 @@ function changeTimer() {
 function addPoints(team, points) {
   if (scoreboard !== null) {
     scoreboard[team].score += points;
-    if (team === "home") {
-      homeScore.textContent = `${scoreboard.home.score}`;
-    } else {
-      guestScore.textContent = `${scoreboard.guest.score}`;
-    }
+    panel[team].score.textContent = `${scoreboard[team].score}`;
   }
+  checkWinning(team);
 }
 
 function addFoul(team) {
   if (scoreboard !== null) {
     scoreboard[team].fouls++;
-    if (team === "home") {
-      homeFouls.textContent = `${scoreboard.home.fouls}`;
-    } else {
-      guestFouls.textContent = `${scoreboard.guest.fouls}`;
-    }
+    panel[team].fouls.textContent = `${scoreboard[team].fouls}`;
   }
 }
 
@@ -81,17 +77,35 @@ function stopPlayTimer() {
   }
 }
 
+function checkWinning(team) {
+  if (winning === null || winning !== team) {
+    teams.sort((a, b) => scoreboard[b].score - scoreboard[a].score);
+    panel[teams[0]].container.classList.add("winning");
+    if (panel[teams[1]].container.classList.contains("winning")) {
+      panel[teams[1]].container.classList.remove("winning");
+    }
+  }
+}
+
+const teams = ["home", "guest"];
 const timer = document.querySelector(".timer");
 const period = document.querySelector(".period");
-const stopBtn = document.querySelector(".stop-play");
 
-const homeScore = document.querySelector(".home .score");
-const homeFouls = document.querySelector(".home .fouls");
-
-const guestScore = document.querySelector(".guest .score");
-const guestFouls = document.querySelector(".guest .fouls");
+const panel = {
+  home: {
+    score: document.querySelector(".home .score"),
+    fouls: document.querySelector(".home .fouls"),
+    container: document.querySelector(".home .score-container"),
+  },
+  guest: {
+    score: document.querySelector(".guest .score"),
+    fouls: document.querySelector(".guest .fouls"),
+    container: document.querySelector(".guest .score-container"),
+  },
+};
 
 let scoreboard = null;
+let winning = null;
 let interval = null;
 let isInterval = null;
 let timerActive = null;
